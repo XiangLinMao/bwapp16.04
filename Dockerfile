@@ -8,7 +8,7 @@ RUN apt-get -y update
 RUN apt-get install -y software-properties-common
 RUN LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 RUN apt-get -y update
-RUN apt-get -y install apache2 php5.6 mysql-server wget unzip curl supervisor
+RUN apt-get -y install apache2 php5.6 php5.6-mysqlnd mysql-server wget unzip curl supervisor
 RUN /etc/init.d/mysql start &&\
     mysql -e "grant all privileges on *.* to 'root'@'localhost' identified by 'bug';"&&\
     mysql -u root -pbug -e "show databases;"
