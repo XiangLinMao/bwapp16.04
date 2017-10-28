@@ -4,9 +4,9 @@ MAINTAINER JackMao <j912944946@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
+RUN add-apt-repository ppa:ondrej/php
 RUN apt-get -y update
 RUN apt-get -y install apache2
-RUN add-apt-repository -y ppa:ondrej/php
 
 RUN apt-get -y update
 RUN apt-get -y install php5.6
