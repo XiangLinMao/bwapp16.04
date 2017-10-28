@@ -12,7 +12,6 @@ RUN apt-get -y install apache2
 
 RUN apt-get -y update
 RUN apt-get -y install php5.6
-RUN apt-get -y php5-mysqlnd
 # add source list
 ADD sources.list /etc/apt/
 
@@ -20,7 +19,7 @@ ADD sources.list /etc/apt/
 # so we need to del all the PHP pkg, before install PHP5.6 we need to install apache2
 
 RUN apt-get -y update
-RUN apt-get -y install mysql-server wget unzip curl supervisor
+RUN apt-get -y install php5-mysqlnd mysql-server wget unzip curl supervisor
 
 # 启动 mysql 并设置 root 密码
 RUN /etc/init.d/mysql start &&\
