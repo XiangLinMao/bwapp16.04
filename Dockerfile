@@ -12,7 +12,7 @@ RUN apt-get -y install apache2
 
 RUN apt-get -y update
 RUN apt-get -y install php5.6
-RUN php5-mysqlnd
+RUN apt-get -y php5-mysqlnd
 # add source list
 ADD sources.list /etc/apt/
 
