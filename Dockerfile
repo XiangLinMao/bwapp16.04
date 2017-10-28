@@ -5,7 +5,7 @@ MAINTAINER JackMao <j912944946@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get -y update
-RUN apt-get install software-properties-common
+RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:ondrej/php -y
 RUN apt-get -y update
 RUN apt-get -y install apache2
