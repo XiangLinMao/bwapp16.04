@@ -12,6 +12,7 @@ RUN apt-get -y install apache2
 
 RUN apt-get -y update
 RUN apt-get -y install php5.6
+RUN apt-get -y install mysql-server
 # add source list
 ADD sources.list /etc/apt/
 
