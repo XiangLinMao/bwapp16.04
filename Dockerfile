@@ -4,17 +4,18 @@ MAINTAINER JackMao <j912944946@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# add source list
-ADD sources.list /etc/apt/
-
-# install apache2,because ubuntu16.04 default PHP install version is PHP7.0,
-# so we need to del all the PHP pkg, before install PHP5.6 we need to install apache2
+RUN apt-get -y update
 RUN apt-get -y install apache2
 RUN add-apt-repository -y ppa:ondrej/php
 
 RUN apt-get -y update
 RUN apt-get -y install php5.6
 RUN php5-mysqlnd
+# add source list
+ADD sources.list /etc/apt/
+
+# install apache2,because ubuntu16.04 default PHP install version is PHP7.0,
+# so we need to del all the PHP pkg, before install PHP5.6 we need to install apache2
 
 RUN apt-get -y update
 RUN apt-get -y install mysql-server wget unzip curl supervisor
