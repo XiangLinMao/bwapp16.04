@@ -4,7 +4,7 @@ MAINTAINER JackMao <j912944946@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN add-apt-repository ppa:ondrej/php
+RUN add-apt-repository ppa:ondrej/php -y
 RUN apt-get -y update
 RUN apt-get -y install apache2
 
