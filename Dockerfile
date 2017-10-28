@@ -8,11 +8,14 @@ RUN apt-get -y update
 RUN apt-get install -y software-properties-common
 RUN LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 RUN apt-get -y update
-RUN apt-get -y install apache2
+RUN apt-get -y install apache2 php5 mysql-server wget unzip curl supervisor
+RUN /etc/init.d/mysql start &&\
+    mysql -e "grant all privileges on *.* to 'root'@'localhost' identified by 'bug';"&&\
+    mysql -u root -pbug -e "show databases;"
 
-RUN apt-get -y update
-RUN apt-get -y install php5.6
-RUN apt-get -y install mysql-server
+# RUN apt-get -y update
+# RUN apt-get -y install php5.6
+# RUN apt-get -y install mysql-server
 # add source list
 ADD sources.list /etc/apt/
 
@@ -20,12 +23,12 @@ ADD sources.list /etc/apt/
 # so we need to del all the PHP pkg, before install PHP5.6 we need to install apache2
 
 RUN apt-get -y update
-RUN apt-get -y install php5-mysqlnd wget unzip curl supervisor
+RUN apt-get -y install php5-mysqlnd 
 
 # 启动 mysql 并设置 root 密码
-RUN /etc/init.d/mysql start &&\
-    mysql -e "grant all privileges on *.* to 'root'@'localhost' identified by 'bug';"&&\
-    mysql -u root -pbug -e "show databases;"
+# RUN /etc/init.d/mysql start &&\
+#     mysql -e "grant all privileges on *.* to 'root'@'localhost' identified by 'bug';"&&\
+#     mysql -u root -pbug -e "show databases;"
 
 # 切换工作目录
 WORKDIR /var/www/html/
